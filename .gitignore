@@ -1,47 +1,52 @@
-# .NET Core
-project.lock.json
-project.fragment.lock.json
-artifacts/
+# Ignore build outputs
+bin/
+obj/
 
-# .NET Core
-project.lock.json
-project.fragment.lock.json
-artifacts/
-
-# User-specific files
+# Ignore user-specific files
 *.rsuser
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
 
-# Auto-generated files
-Generated\
-
-# Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-[Aa][Rr][Mm]/
-[Aa][Rr][Mm]64/
-bld/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
-[Ll]ogs/
-
-# Uncomment if you have tasks that create the following files
-# publish/
-# *.publishsettings
-
-# Visual Studio 2019
+# Ignore Visual Studio Code settings
 .vscode/
-.vscode-test/
 
-# Rider
-.idea/
-.idea_modules/
-.idea_modules.xml
+# Ignore Doxygen output
+docs/
+
+# Ignore NuGet packages
+*.nupkg
+*.snupkg
+.nuget/
+
+# Ignore project lock files
+project.lock.json
+project.fragment.lock.json
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.log
+
+# Ignore compiled DLLs
+*.dll
+*.exe
+*.so
+*.dylib
+*.class
+
+# Ignore coverage reports
+coverage/
+*.coverage
+*.coveragexml
+*.cov
+*.gcov
+*.gcda
+*.gcno
+*.lcov
+*.lst
+
+# Ignore other files
+*.DS_Store
+Thumbs.db
