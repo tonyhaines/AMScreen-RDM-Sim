@@ -1,0 +1,78 @@
+\doxysection{Messaging.\+Rabbit\+MQSender Class Reference}
+\hypertarget{classMessaging_1_1RabbitMQSender}{}\label{classMessaging_1_1RabbitMQSender}\index{Messaging.RabbitMQSender@{Messaging.RabbitMQSender}}
+
+
+This class is responsible for sending messages to Rabbit\+MQ.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMessaging_1_1RabbitMQSender_a13ece1bb108f367ef0b2f100b456d83f}{Rabbit\+MQSender}} (string hostname, string queue\+Name, string exchange\+Name, int port=5672)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the Rabbit\+MQSender class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMessaging_1_1RabbitMQSender_ae232258dfacb8e8eb1dc62a6dfcd283c}{Send\+Message}} (string message)
+\begin{DoxyCompactList}\small\item\em Sends a message to the specified Rabbit\+MQ queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is responsible for sending messages to Rabbit\+MQ. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMessaging_1_1RabbitMQSender_a13ece1bb108f367ef0b2f100b456d83f}\label{classMessaging_1_1RabbitMQSender_a13ece1bb108f367ef0b2f100b456d83f} 
+\index{Messaging.RabbitMQSender@{Messaging.RabbitMQSender}!RabbitMQSender@{RabbitMQSender}}
+\index{RabbitMQSender@{RabbitMQSender}!Messaging.RabbitMQSender@{Messaging.RabbitMQSender}}
+\doxysubsubsection{\texorpdfstring{RabbitMQSender()}{RabbitMQSender()}}
+{\footnotesize\ttfamily Messaging.\+Rabbit\+MQSender.\+Rabbit\+MQSender (\begin{DoxyParamCaption}\item[{string}]{hostname,  }\item[{string}]{queue\+Name,  }\item[{string}]{exchange\+Name,  }\item[{int}]{port = {\ttfamily 5672} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initializes a new instance of the Rabbit\+MQSender class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hostname} & The Rabbit\+MQ hostname.\\
+\hline
+{\em queue\+Name} & The Rabbit\+MQ queue name.\\
+\hline
+{\em exchange\+Name} & The Rabbit\+MQ exchange name.\\
+\hline
+{\em port} & The Rabbit\+MQ port. Default is 5672.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Exception} & Thrown when any of the required parameters are null or empty, or when the port is not a positive integer.\\
+\hline
+{\em Invalid\+Operation\+Exception} & Thrown when the secrets configuration is invalid.\\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMessaging_1_1RabbitMQSender_ae232258dfacb8e8eb1dc62a6dfcd283c}\label{classMessaging_1_1RabbitMQSender_ae232258dfacb8e8eb1dc62a6dfcd283c} 
+\index{Messaging.RabbitMQSender@{Messaging.RabbitMQSender}!SendMessage@{SendMessage}}
+\index{SendMessage@{SendMessage}!Messaging.RabbitMQSender@{Messaging.RabbitMQSender}}
+\doxysubsubsection{\texorpdfstring{SendMessage()}{SendMessage()}}
+{\footnotesize\ttfamily void Messaging.\+Rabbit\+MQSender.\+Send\+Message (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sends a message to the specified Rabbit\+MQ queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message to send.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Exception} & Thrown when the message is null or empty.\\
+\hline
+{\em Exception} & Thrown when an error occurs while sending the message.\\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Rabbit\+MQSender.\+cs\end{DoxyCompactItemize}

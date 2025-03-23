@@ -1,0 +1,80 @@
+\doxysection{Messaging.\+Json\+Data\+Formatter Class Reference}
+\hypertarget{classMessaging_1_1JsonDataFormatter}{}\label{classMessaging_1_1JsonDataFormatter}\index{Messaging.JsonDataFormatter@{Messaging.JsonDataFormatter}}
+
+
+This class is responsible for formatting data to JSON.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classMessaging_1_1JsonDataFormatter_a41f6c1bcdb13d626de1d95fda16b4bc3}{Format\+To\+Json}} (int network\+Owner, int landlord, int site, int sign, string site\+Code, string third\+Party\+Cms\+ID, string sign\+Serial\+Number, string site\+Address\+Line1, string site\+Address\+Postcode, string landlord\+Name, string network\+Owner\+Name, string type, string category, string name, string raise\+Time, string exception\+Description, int exception\+Type\+ID)
+\begin{DoxyCompactList}\small\item\em Formats the provided data into a JSON string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is responsible for formatting data to JSON. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMessaging_1_1JsonDataFormatter_a41f6c1bcdb13d626de1d95fda16b4bc3}\label{classMessaging_1_1JsonDataFormatter_a41f6c1bcdb13d626de1d95fda16b4bc3} 
+\index{Messaging.JsonDataFormatter@{Messaging.JsonDataFormatter}!FormatToJson@{FormatToJson}}
+\index{FormatToJson@{FormatToJson}!Messaging.JsonDataFormatter@{Messaging.JsonDataFormatter}}
+\doxysubsubsection{\texorpdfstring{FormatToJson()}{FormatToJson()}}
+{\footnotesize\ttfamily string Messaging.\+Json\+Data\+Formatter.\+Format\+To\+Json (\begin{DoxyParamCaption}\item[{int}]{network\+Owner,  }\item[{int}]{landlord,  }\item[{int}]{site,  }\item[{int}]{sign,  }\item[{string}]{site\+Code,  }\item[{string}]{third\+Party\+Cms\+ID,  }\item[{string}]{sign\+Serial\+Number,  }\item[{string}]{site\+Address\+Line1,  }\item[{string}]{site\+Address\+Postcode,  }\item[{string}]{landlord\+Name,  }\item[{string}]{network\+Owner\+Name,  }\item[{string}]{type,  }\item[{string}]{category,  }\item[{string}]{name,  }\item[{string}]{raise\+Time,  }\item[{string}]{exception\+Description,  }\item[{int}]{exception\+Type\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Formats the provided data into a JSON string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network\+Owner} & The network owner ID.\\
+\hline
+{\em landlord} & The landlord ID.\\
+\hline
+{\em site} & The site ID.\\
+\hline
+{\em sign} & The sign ID.\\
+\hline
+{\em site\+Code} & The site code.\\
+\hline
+{\em third\+Party\+Cms\+ID} & The third-\/party CMS ID.\\
+\hline
+{\em sign\+Serial\+Number} & The sign serial number.\\
+\hline
+{\em site\+Address\+Line1} & The site address line 1.\\
+\hline
+{\em site\+Address\+Postcode} & The site address postcode.\\
+\hline
+{\em landlord\+Name} & The landlord name.\\
+\hline
+{\em network\+Owner\+Name} & The network owner name.\\
+\hline
+{\em type} & The type of the message.\\
+\hline
+{\em category} & The category of the message.\\
+\hline
+{\em name} & The name associated with the message.\\
+\hline
+{\em raise\+Time} & The time the message was raised.\\
+\hline
+{\em exception\+Description} & The description of the exception.\\
+\hline
+{\em exception\+Type\+ID} & The exception type ID.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A JSON string representing the formatted data.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Exception} & Thrown when any of the required parameters are null, empty, or invalid.\\
+\hline
+{\em Exception} & Thrown when an error occurs during JSON serialization.\\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Data\+Formatter.\+cs\end{DoxyCompactItemize}
