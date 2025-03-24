@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Messaging;
 
 namespace AMScreenRDM
@@ -14,7 +15,7 @@ namespace AMScreenRDM
         /// The main method of the application.
         /// </summary>
         /// <param name="args">The command-line arguments.</param>
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             // Read configuration from config.json
             var config = JsonSerializer.Deserialize<Config>(File.ReadAllText("config.json"));
@@ -80,10 +81,13 @@ namespace AMScreenRDM
                     exceptionDescription,
                     exceptionTypeID);
 
-                // Send the JSON string as a message
-                sender.SendMessage(jsonData);
-
-                Console.WriteLine("Message sent: " + jsonData);
+                // Loop to send 1 message every second for a total count of 500
+                for (int i = 0; i < 500; i++)
+                {
+                    sender.SendMessage(jsonData);
+                    Console.WriteLine("Message sent: " + jsonData);
+                    await Task.Delay(1000); // Wait for 1 second
+                }
             }
             catch (ArgumentException ex)
             {
