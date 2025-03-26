@@ -3,6 +3,7 @@ using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Messaging;
+using System.Linq;
 
 namespace AMScreenRDM
 {
@@ -17,8 +18,9 @@ namespace AMScreenRDM
         /// <param name="args">The command-line arguments.</param>
         static async Task Main(string[] args)
         {
-            // Read configuration from config.json
-            var config = JsonSerializer.Deserialize<Config>(File.ReadAllText("config.json"));
+            // Read configuration from /home/user/Development/AMScreen-RDM-config/config.json
+            var configPath = Path.Combine("/home", "user", "Development", "AMScreen-RDM-config", "config.json");
+            var config = JsonSerializer.Deserialize<Config>(File.ReadAllText(configPath));
             if (config == null || config.RabbitMQ == null)
             {
                 Console.WriteLine("Invalid configuration.");
@@ -41,52 +43,73 @@ namespace AMScreenRDM
 
                 RabbitMQSender sender = new RabbitMQSender(hostname, queueName, exchangeName, port);
 
-                // Dummy information with UK address
-                int networkOwner = 1;
-                int landlord = 2;
-                int site = 3;
-                int sign = 4;
-                string siteCode = "ABC";
-                string thirdPartyCmsID = "XYZ";
-                string signSerialNumber = "123";
-                string siteAddressLine1 = "221B Baker Street";
-                string siteAddressPostcode = "NW1 6XE";
-                string landlordName = "John Doe";
-                string networkOwnerName = "Network Owner";
-                string type = "Type";
-                string category = "Category";
-                string name = "Name";
-                string raiseTime = DateTime.Now.ToString("o");
-                string exceptionDescription = "Exception Description";
-                int exceptionTypeID = 1;
-
-                // Format to JSON
-                JsonDataFormatter formatter = new JsonDataFormatter();
-                string jsonData = formatter.FormatToJson(
-                    networkOwner,
-                    landlord,
-                    site,
-                    sign,
-                    siteCode,
-                    thirdPartyCmsID,
-                    signSerialNumber,
-                    siteAddressLine1,
-                    siteAddressPostcode,
-                    landlordName,
-                    networkOwnerName,
-                    type,
-                    category,
-                    name,
-                    raiseTime,
-                    exceptionDescription,
-                    exceptionTypeID);
-
-                // Loop to send 1 message every second for a total count of 500
-                for (int i = 0; i < 500; i++)
+                // Load data from arrays.js
+                var jsonData = File.ReadAllText("/home/user/Development/AMScreen-RDM-Sim/AMScreen-RDM-Sim/arrays.json");
+                var jsonContent = jsonData.Replace("module.exports = ", "").TrimEnd(';');
+                var data = JsonSerializer.Deserialize<JsonElement>(jsonContent);
+                if (data.ValueKind == JsonValueKind.Undefined || data.ValueKind == JsonValueKind.Null)
                 {
-                    sender.SendMessage(jsonData);
-                    Console.WriteLine("Message sent: " + jsonData);
-                    await Task.Delay(1000); // Wait for 1 second
+                    Console.WriteLine("Failed to load data from arrays.js.");
+                    return;
+                }
+
+                // Loop to send messages ensuring each name has one RAISE and one CLEAR
+                for (int i = 0; i < data.GetProperty("names").GetArrayLength(); i++)
+                {
+                    foreach (var sensorState in data.GetProperty("sensorStates").EnumerateArray())
+                    {
+                        if (sensorState.ValueKind == JsonValueKind.Undefined || sensorState.ValueKind == JsonValueKind.Null) continue;
+
+                        var siteCode = data.GetProperty("siteCodes")[i].GetString();
+                        var thirdPartyCmsID = data.GetProperty("thirdPartyCmsIDs")[i].GetString();
+                        var signSerialNumber = data.GetProperty("signSerialNumbers")[i].GetString();
+                        var siteAddressLine1 = data.GetProperty("siteAddressLine1s")[i].GetString();
+                        var siteAddressPostcode = data.GetProperty("siteAddressPostcodes")[i].GetString();
+                        var landlordName = data.GetProperty("landlordNames")[i].GetString();
+                        var networkOwnerName = data.GetProperty("networkOwnerNames")[i].GetString();
+                        var name = data.GetProperty("names")[i].GetString();
+                        var notificationType = data.GetProperty("notificationTypes")[i % data.GetProperty("notificationTypes").GetArrayLength()].GetString();
+
+                        if (siteCode == null || thirdPartyCmsID == null || signSerialNumber == null || siteAddressLine1 == null ||
+                            siteAddressPostcode == null || landlordName == null || networkOwnerName == null || name == null || notificationType == null)
+                        {
+                            Console.WriteLine("One or more required properties are null.");
+                            continue;
+                        }
+
+                        var sensorStateString = sensorState.GetString();
+                        if (sensorStateString == null)
+                        {
+                            Console.WriteLine("Sensor state is null.");
+                            continue;
+                        }
+
+                        string formattedJsonData = new JsonDataFormatter().FormatToJson(
+                            sensorStateString,
+                            1, // networkOwner
+                            2, // landlord
+                            3, // site
+                            4, // sign
+                            siteCode,
+                            thirdPartyCmsID,
+                            signSerialNumber,
+                            siteAddressLine1,
+                            siteAddressPostcode,
+                            landlordName,
+                            networkOwnerName,
+                            "Type", // type
+                            "Category", // category
+                            name,
+                            DateTime.Now.ToString("o"), // raiseTime
+                            "Exception Description", // exceptionDescription
+                            1, // exceptionTypeID
+                            notificationType
+                        );
+
+                        sender.SendMessage(formattedJsonData);
+                        Console.WriteLine("Message sent: " + formattedJsonData);
+                        await Task.Delay(10000); // Wait for 1 second
+                    }
                 }
             }
             catch (ArgumentException ex)

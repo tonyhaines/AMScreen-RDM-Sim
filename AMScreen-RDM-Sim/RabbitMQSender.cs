@@ -39,8 +39,9 @@ namespace Messaging
             _exchangeName = exchangeName;
             _port = port;
 
-            // Read credentials from secrets.json
-            var secrets = JsonSerializer.Deserialize<Secrets>(File.ReadAllText("secrets.json"));
+            // Read credentials from /home/user/Development/AMScreen-RDM-config/secrets.json
+            var secretsPath = Path.Combine("/home", "user", "Development", "AMScreen-RDM-config", "secrets.json");
+            var secrets = JsonSerializer.Deserialize<Secrets>(File.ReadAllText(secretsPath));
             if (secrets == null || secrets.RabbitMQ == null)
             {
                 throw new InvalidOperationException("Invalid secrets configuration.");

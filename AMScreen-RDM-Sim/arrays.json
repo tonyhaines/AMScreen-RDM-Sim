@@ -1,0 +1,50 @@
+{
+    "names": [
+        "Billboard cabinet 18 PSU#2 voltage alarm",
+        "SideA no video input detected",
+        "SideA no video input detected"
+    ],
+    "signSerialNumbers": [
+        "2097000444",
+        "2098670069",
+        "2081900058"
+    ],
+    "sensorStates": [
+        "RAISE",
+        "CLEAR"
+    ],
+    "notificationTypes": [
+        "alarm",
+        "warning"
+    ],
+    "siteAddressLine1s": [
+        "221B Baker Street",
+        "742 Evergreen Terrace",
+        "12 Grimmauld Place"
+    ],
+    "siteAddressPostcodes": [
+        "NW1 6XE",
+        "12345",
+        "67890"
+    ],
+    "landlordNames": [
+        "John Doe",
+        "Jane Smith",
+        "Harry Potter"
+    ],
+    "networkOwnerNames": [
+        "Network Owner",
+        "Owner Two",
+        "Owner Three"
+    ],
+    "siteCodes": [
+        "ABC",
+        "DEF",
+        "GHI"
+    ],
+    "thirdPartyCmsIDs": [
+        "XYZ",
+        "LMN",
+        "OPQ"
+    ]
+}
