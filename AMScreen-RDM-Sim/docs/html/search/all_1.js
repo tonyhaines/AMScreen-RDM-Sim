@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['config_0',['Config',['../classAMScreenRDM_1_1Config.html',1,'AMScreenRDM']]]
+  ['2_20data_20processing_0',['2. Data Processing',['../md_ApplicationDocumentation.html#autotoc_md4',1,'']]]
 ];

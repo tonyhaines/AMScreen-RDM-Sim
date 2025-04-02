@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hostname_0',['Hostname',['../classAMScreenRDM_1_1RabbitMQConfig.html#a70c27c6c7d5b285078c6d9021be611ed',1,'AMScreenRDM::RabbitMQConfig']]]
+  ['5_20updated_20rdmdpexraisefunc_20cs_0',['5. Updated RDMDPExRaiseFunc.cs',['../md_ApplicationDocumentation.html#autotoc_md7',1,'']]]
 ];

@@ -8,7 +8,7 @@ This class is responsible for formatting data to JSON.
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-string \mbox{\hyperlink{classMessaging_1_1JsonDataFormatter_a41f6c1bcdb13d626de1d95fda16b4bc3}{Format\+To\+Json}} (int network\+Owner, int landlord, int site, int sign, string site\+Code, string third\+Party\+Cms\+ID, string sign\+Serial\+Number, string site\+Address\+Line1, string site\+Address\+Postcode, string landlord\+Name, string network\+Owner\+Name, string type, string category, string name, string raise\+Time, string exception\+Description, int exception\+Type\+ID)
+string \mbox{\hyperlink{classMessaging_1_1JsonDataFormatter_a6be38a5fd01775141c1b7084c1368950}{Format\+To\+Json}} (string sensor\+State, int network\+Owner, int landlord, int site, int sign, string site\+Code, string third\+Party\+Cms\+ID, string sign\+Serial\+Number, string site\+Address\+Line1, string site\+Address\+Postcode, string landlord\+Name, string network\+Owner\+Name, string type, string category, string name, string raise\+Time, string exception\+Description, int exception\+Type\+ID, string notification\+Type)
 \begin{DoxyCompactList}\small\item\em Formats the provided data into a JSON string. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -16,11 +16,11 @@ string \mbox{\hyperlink{classMessaging_1_1JsonDataFormatter_a41f6c1bcdb13d626de1
 This class is responsible for formatting data to JSON. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classMessaging_1_1JsonDataFormatter_a41f6c1bcdb13d626de1d95fda16b4bc3}\label{classMessaging_1_1JsonDataFormatter_a41f6c1bcdb13d626de1d95fda16b4bc3} 
+\Hypertarget{classMessaging_1_1JsonDataFormatter_a6be38a5fd01775141c1b7084c1368950}\label{classMessaging_1_1JsonDataFormatter_a6be38a5fd01775141c1b7084c1368950} 
 \index{Messaging.JsonDataFormatter@{Messaging.JsonDataFormatter}!FormatToJson@{FormatToJson}}
 \index{FormatToJson@{FormatToJson}!Messaging.JsonDataFormatter@{Messaging.JsonDataFormatter}}
 \doxysubsubsection{\texorpdfstring{FormatToJson()}{FormatToJson()}}
-{\footnotesize\ttfamily string Messaging.\+Json\+Data\+Formatter.\+Format\+To\+Json (\begin{DoxyParamCaption}\item[{int}]{network\+Owner,  }\item[{int}]{landlord,  }\item[{int}]{site,  }\item[{int}]{sign,  }\item[{string}]{site\+Code,  }\item[{string}]{third\+Party\+Cms\+ID,  }\item[{string}]{sign\+Serial\+Number,  }\item[{string}]{site\+Address\+Line1,  }\item[{string}]{site\+Address\+Postcode,  }\item[{string}]{landlord\+Name,  }\item[{string}]{network\+Owner\+Name,  }\item[{string}]{type,  }\item[{string}]{category,  }\item[{string}]{name,  }\item[{string}]{raise\+Time,  }\item[{string}]{exception\+Description,  }\item[{int}]{exception\+Type\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily string Messaging.\+Json\+Data\+Formatter.\+Format\+To\+Json (\begin{DoxyParamCaption}\item[{string}]{sensor\+State,  }\item[{int}]{network\+Owner,  }\item[{int}]{landlord,  }\item[{int}]{site,  }\item[{int}]{sign,  }\item[{string}]{site\+Code,  }\item[{string}]{third\+Party\+Cms\+ID,  }\item[{string}]{sign\+Serial\+Number,  }\item[{string}]{site\+Address\+Line1,  }\item[{string}]{site\+Address\+Postcode,  }\item[{string}]{landlord\+Name,  }\item[{string}]{network\+Owner\+Name,  }\item[{string}]{type,  }\item[{string}]{category,  }\item[{string}]{name,  }\item[{string}]{raise\+Time,  }\item[{string}]{exception\+Description,  }\item[{int}]{exception\+Type\+ID,  }\item[{string}]{notification\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -61,6 +61,8 @@ Formats the provided data into a JSON string.
 {\em exception\+Description} & The description of the exception.\\
 \hline
 {\em exception\+Type\+ID} & The exception type ID.\\
+\hline
+{\em notification\+Type} & The type of notification (warning or alarm).\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

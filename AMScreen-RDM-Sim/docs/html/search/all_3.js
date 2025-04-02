@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['formattojson_0',['FormatToJson',['../classMessaging_1_1JsonDataFormatter.html#a41f6c1bcdb13d626de1d95fda16b4bc3',1,'Messaging::JsonDataFormatter']]]
+  ['4_20integration_20with_20new_20classes_0',['4. Integration with New Classes',['../md_ApplicationDocumentation.html#autotoc_md6',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['exchangename_0',['ExchangeName',['../classAMScreenRDM_1_1RabbitMQConfig.html#a78b1004951d4edf1a3e0548439c51bca',1,'AMScreenRDM::RabbitMQConfig']]]
+  ['3_20message_20generation_20and_20sending_0',['3. Message Generation and Sending',['../md_ApplicationDocumentation.html#autotoc_md5',1,'']]]
 ];

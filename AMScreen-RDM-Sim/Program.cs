@@ -53,7 +53,7 @@ namespace AMScreenRDM
                     return;
                 }
 
-                // Loop to send messages ensuring each name has one RAISE and one CLEAR
+                // Loop to send messages ensuring each name has five RAISEs and one CLEAR
                 for (int i = 0; i < data.GetProperty("names").GetArrayLength(); i++)
                 {
                     foreach (var sensorState in data.GetProperty("sensorStates").EnumerateArray())
@@ -84,8 +84,37 @@ namespace AMScreenRDM
                             continue;
                         }
 
-                        string formattedJsonData = new JsonDataFormatter().FormatToJson(
-                            sensorStateString,
+                        for (int raiseCount = 0; raiseCount < 5; raiseCount++)
+                        {
+                            string formattedJsonData = new JsonDataFormatter().FormatToJson(
+                                "RAISE",
+                                1, // networkOwner
+                                2, // landlord
+                                3, // site
+                                4, // sign
+                                siteCode,
+                                thirdPartyCmsID,
+                                signSerialNumber,
+                                siteAddressLine1,
+                                siteAddressPostcode,
+                                landlordName,
+                                networkOwnerName,
+                                "Type", // type
+                                "Category", // category
+                                name,
+                                DateTime.Now.ToString("o"), // raiseTime
+                                "Exception Description", // exceptionDescription
+                                1, // exceptionTypeID
+                                notificationType
+                            );
+
+                            sender.SendMessage(formattedJsonData);
+                            Console.WriteLine("Message sent: " + formattedJsonData);
+                            await Task.Delay(10000); // Wait for 1 second
+                        }
+
+                        string clearJsonData = new JsonDataFormatter().FormatToJson(
+                            "CLEAR",
                             1, // networkOwner
                             2, // landlord
                             3, // site
@@ -106,8 +135,8 @@ namespace AMScreenRDM
                             notificationType
                         );
 
-                        sender.SendMessage(formattedJsonData);
-                        Console.WriteLine("Message sent: " + formattedJsonData);
+                        sender.SendMessage(clearJsonData);
+                        Console.WriteLine("Message sent: " + clearJsonData);
                         await Task.Delay(10000); // Wait for 1 second
                     }
                 }
